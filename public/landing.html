@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money Backers — We've got your money's back.</title>
+<meta name="description" content="Money Backers catches return deadlines, price drops and forgotten subscriptions so you get your money back. We keep 20% only when you get paid.">
+<style>
+:root{--g:#0e9f6e;--gd:#057a55;--ink:#0f172a;--mut:#64748b;--bg:#f6faf8;--card:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+.w{max-width:960px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{font-weight:800;font-size:20px}.logo span{color:var(--g)}
+.btn{display:inline-block;border:0;border-radius:12px;padding:14px 20px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
+.p{background:var(--g);color:#fff}.p:hover{background:var(--gd)}.s{background:#fff;color:var(--ink);border:2px solid #d1e7dd}
+.hero{padding:28px 0 40px;text-align:center}
+.hero h1{font-size:clamp(34px,9vw,60px);line-height:1.05;margin:8px 0 14px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--g)}.hero p{font-size:18px;color:var(--mut);max-width:560px;margin:0 auto 22px}
+.pill{display:inline-block;background:#def7ec;color:var(--gd);font-weight:700;font-size:13px;padding:6px 12px;border-radius:99px}
+form{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto}
+input{font-size:16px;padding:14px;border-radius:12px;border:2px solid #cbd5e1}input:focus{outline:none;border-color:var(--g)}
+.msg{min-height:22px;font-size:14px;margin-top:8px}.err{color:#c81e1e}
+.share{display:none;background:#fff;border:2px dashed var(--g);border-radius:14px;padding:16px;max-width:440px;margin:14px auto 0;text-align:left}
+.share code{display:block;word-break:break-all;background:#f1f5f9;padding:10px;border-radius:8px;margin:8px 0;font-size:13px}
+.cta2{margin-top:14px}
+section{padding:40px 0}h2{font-size:28px;margin:0 0 20px;text-align:center}
+.steps{display:grid;gap:14px}.card{background:var(--card);border-radius:16px;padding:20px;box-shadow:0 1px 3px #0001}
+.n{width:34px;height:34px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:8px}
+.card h3{margin:0 0 4px}.card p{margin:0;color:var(--mut)}
+.ex .tag{display:inline-block;background:#fef3c7;color:#92400e;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px;margin-bottom:10px;letter-spacing:.04em}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eef2f7}.row b{color:var(--gd)}
+.tot{display:flex;justify-content:space-between;font-weight:800;padding-top:12px;font-size:18px}
+.fine{font-size:13px;color:var(--mut);margin-top:10px}
+details{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 1px 3px #0001}summary{font-weight:700;cursor:pointer}details p{color:var(--mut);margin:8px 0 0}
+footer{text-align:center;color:var(--mut);font-size:14px;padding:30px 0 40px}
+@media(min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}form{flex-direction:row}form input{flex:1}}
+</style></head><body>
+<div class="w">
+<nav><div class="logo">Money<span>Backers</span></div><a class="btn s" style="padding:8px 14px;font-size:14px" href="/app">Try the demo</a></nav>
+<header class="hero">
+<span class="pill">Early access waitlist</span>
+<h1>Stores owe you money.<br><em>We'll get it back.</em></h1>
+<p>Money Backers catches return deadlines, price drops and forgotten subscriptions hiding in your receipts. We've got your money's back.</p>
+<form id="f"><input id="email" type="email" required placeholder="you@email.com" autocomplete="email" aria-label="Email"><button class="btn p">Join the waitlist</button></form>
+<div id="msg" class="msg"></div>
+<div id="share" class="share"><b>You're on the list! 🎉</b><div>Share your link. When a friend joins through it, you both get a free month of premium after launch.</div><code id="link"></code><button id="copy" class="btn p" style="width:100%">Copy my link</button><div id="refs" class="fine"></div><div class="fine">Changed your mind? <a id="unsub" href="/unsubscribe">Remove my email</a> (keep your code: <b id="mycode"></b>)</div></div>
+<div class="cta2"><a class="btn s" href="/app">Try the demo →</a></div>
+</header>
+<section><h2>How it works</h2><div class="steps">
+<div class="card"><div class="n">1</div><h3>Connect receipts</h3><p>Upload receipts or connect your email. We read the store, date and total.</p></div>
+<div class="card"><div class="n">2</div><h3>We catch the money</h3><p>Return deadlines, price drops and subscriptions you forgot you're paying for.</p></div>
+<div class="card"><div class="n">3</div><h3>You get paid</h3><p>Get your money back. We keep 20% only when you get paid. Nothing recovered, nothing owed.</p></div>
+</div></section>
+<section class="ex"><h2>What it could find</h2><div class="card">
+<span class="tag">EXAMPLE ONLY — NOT REAL RESULTS</span>
+<div class="row"><span>TV price dropped after purchase</span><b>$60.00</b></div>
+<div class="row"><span>Unused gym subscription (yearly)</span><b>$239.88</b></div>
+<div class="row"><span>Headphones still in return window</span><b>$79.99</b></div>
+<div class="tot"><span>Example total</span><span>$379.87</span></div>
+<div class="fine">Illustrative numbers to show how it works. You'd keep $303.90; our 20% fee would be $75.97. Actual results vary.</div>
+</div></section>
+<section><h2>FAQ</h2>
+<details><summary>How much does it cost?</summary><p>Nothing up front. We keep 20% of money we help you recover, only when you get paid.</p></details>
+<details><summary>Is my data safe?</summary><p>We only look for purchase and subscription info. We never sell your data. Receipts you add in the app stay in your browser, and the “Delete all my data” button in the app erases them. To remove your waitlist email, use the “Remove my email” link in your share box or go to /unsubscribe with your email and your code (the part after ?ref= in your link).</p></details>
+<details><summary>Do I have to connect my email?</summary><p>No. You can upload or paste receipts instead. Email connection is coming and will be optional.</p></details>
+<details><summary>When does it launch?</summary><p>We're in early access now. Join the waitlist and we'll email you when your spot opens. You can try the demo today.</p></details>
+<details><summary>What does my referral link do?</summary><p>When a friend joins the waitlist through your link, you both get a free month of premium after launch.</p></details>
+</section>
+<footer>© 2026 Money Backers · We've got your money's back. · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></footer>
+</div>
+<script>
+const ref=new URLSearchParams(location.search).get('ref');if(ref)try{localStorage.setItem('mb_ref',ref)}catch(e){}
+const f=document.getElementById('f'),m=document.getElementById('msg');
+f.onsubmit=async e=>{e.preventDefault();m.className='msg';m.textContent='Joining…';
+ let r=ref;try{r=r||localStorage.getItem('mb_ref')}catch(e){}
+ try{const res=await fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('email').value,ref:r})});const j=await res.json();
+ if(!res.ok){m.className='msg err';m.textContent=j.error||'Something went wrong.';return}
+ let code=j.code;try{if(code)localStorage.setItem('mb_code',code);else code=localStorage.getItem('mb_code')}catch(e){}
+ if(j.already&&!code){m.textContent='You\'re already on the list! Your share link is in the browser you first signed up on.';f.style.display='none';return}
+ m.textContent=j.already?'You were already on the list. Here is your link:':'';const link=location.origin+'/?ref='+code;
+ document.getElementById('mycode').textContent=code;document.getElementById('unsub').href='/unsubscribe?email='+encodeURIComponent(document.getElementById('email').value.trim())+'&code='+code;
+ document.getElementById('link').textContent=link;document.getElementById('refs').textContent=j.referrals?j.referrals+' friend(s) joined through your link.':'';
+ document.getElementById('share').style.display='block';f.style.display='none';
+ document.getElementById('copy').onclick=async()=>{if(navigator.share){try{await navigator.share({title:'Money Backers',text:'Get money back from your receipts',url:link});return}catch(e){}}navigator.clipboard.writeText(link);document.getElementById('copy').textContent='Copied!'};
+ }catch(e){m.className='msg err';m.textContent='Network error, please try again.'}};
+</script></body></html>

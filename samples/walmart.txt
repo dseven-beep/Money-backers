@@ -1,0 +1,7 @@
+Walmart Supercenter
+10/12/2026
+Ninja Air Fryer   89.00
+Great Value Milk   3.48
+SUBTOTAL 92.48
+TAX 6.47
+TOTAL 98.95

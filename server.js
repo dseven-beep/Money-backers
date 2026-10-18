@@ -1,0 +1,17 @@
+const express=require('express'),multer=require('multer'),pdf=require('pdf-parse'),path=require('path'),fs=require('fs');const{parseReceipt}=require('./parser');
+const app=express();const up=multer({limits:{fileSize:10e6}});app.use(express.json({limit:'2mb'}));const wl=require('./waitlist');
+app.get('/',(q,r)=>r.sendFile(path.join(__dirname,'public','landing.html')));
+const legal=require('./legal');app.get('/privacy',(q,r)=>r.send(legal.render('privacy-policy.md','Privacy Policy')));app.get('/terms',(q,r)=>r.send(legal.render('terms-of-service.md','Terms of Service')));
+app.get(['/app','/app/'],(q,r)=>r.sendFile(path.join(__dirname,'public','app.html')));
+app.use(express.static(path.join(__dirname,'public'),{index:false}));
+app.post('/api/waitlist',(q,r)=>{const o=wl.join(q.body&&q.body.email,q.body&&q.body.ref);r.status(o.status).json(o.body);});
+app.delete('/api/waitlist',(q,r)=>{const b=q.body||{};const o=wl.remove(b.email||q.query.email,b.code||q.query.code);r.status(o.status).json(o.body);});
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+const page=b=>`<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Remove my email · Money Backers</title><body style="font-family:system-ui;max-width:420px;margin:40px auto;padding:0 16px">${b}<p><a href="/">← Money Backers</a></p></body>`;
+app.get('/unsubscribe',(q,r)=>r.send(page(`<h2>Remove me from the waitlist</h2><p>This permanently deletes your email and referral record.</p><form method="post" action="/unsubscribe"><p><input name="email" type="email" required placeholder="you@email.com" value="${esc(q.query.email)}" style="width:100%;padding:8px"></p><p><input name="code" required placeholder="Your code (from your share link)" value="${esc(q.query.code)}" style="width:100%;padding:8px"></p><button style="padding:10px 14px">Delete my email</button></form>`)));
+app.post('/unsubscribe',express.urlencoded({extended:false}),(q,r)=>{const o=wl.remove(q.body.email,q.body.code);r.status(o.status).send(page(o.status===200?'<h2>Done</h2><p>Your email has been deleted from the waitlist.</p>':`<h2>Couldn't remove</h2><p>${esc(o.body.error)}</p><p><a href="/unsubscribe">Try again</a></p>`));});
+app.post('/api/parse',(q,r)=>{if(!q.body.text)return r.status(400).json({error:'text required'});r.json(parseReceipt(q.body.text));});
+app.post('/api/parse-pdf',up.single('file'),async(q,r)=>{try{const d=await pdf(q.file.buffer);r.json({text:d.text,...parseReceipt(d.text)});}catch(e){r.status(400).json({error:'Could not read PDF'});}});
+app.get('/api/samples',(q,r)=>{const dir=path.join(__dirname,'samples');r.json(fs.readdirSync(dir).map(f=>({name:f,text:fs.readFileSync(path.join(dir,f),'utf8')})));});
+app.post('/api/price-check',(q,r)=>r.json({live:false,message:'Price tracking not live yet (placeholder).'}));
+const P=process.env.PORT||5173;app.listen(P,'0.0.0.0',()=>console.log('Money Backers on http://localhost:'+P));

@@ -1,0 +1,10 @@
+TARGET
+Store 1234 - Austin TX
+09/28/2026
+Threshold Throw Blanket   24.99
+KitchenAid Hand Mixer   59.99
+Up&Up Paper Towels   12.49
+SUBTOTAL 97.47
+TAX 8.04
+TOTAL 105.51
+VISA 105.51

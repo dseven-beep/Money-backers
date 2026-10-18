@@ -1,0 +1,5 @@
+From: Netflix <info@account.netflix.com>
+Subject: Your Netflix membership has renewed
+Date: Oct 1, 2026
+Standard plan (billed monthly)   $15.49
+Amount charged: $15.49

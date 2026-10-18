@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Money Backers — Get your money back</title>
+<style>
+:root{--g:#10b981;--bg:#f6f7fb;--c:#fff;--t:#111827;--m:#6b7280;--r:#ef4444;--a:#f59e0b}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--t)}
+header{background:linear-gradient(135deg,#059669,#10b981);color:#fff;padding:20px 16px 56px}header h1{margin:0;font-size:22px}header p{margin:4px 0 0;opacity:.9;font-size:14px}
+main{max-width:900px;margin:-40px auto 40px;padding:0 12px}.card{background:var(--c);border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:14px}
+.hero{text-align:center}.big{font-size:40px;font-weight:800;color:var(--g)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.stats div{background:var(--bg);border-radius:10px;padding:8px;font-size:12px;color:var(--m)}.stats b{display:block;font-size:18px;color:var(--t)}
+textarea{width:100%;min-height:110px;border:1px solid #e5e7eb;border-radius:10px;padding:10px;font:inherit}
+button,.btn{background:var(--g);color:#fff;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer;font-size:14px;display:inline-block}
+.ghost{background:#eef2f7;color:var(--t)}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+h2{font-size:16px;margin:0 0 10px}.item{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-top:1px solid #f0f0f0;font-size:14px}.item:first-of-type{border-top:0}
+.sub{color:var(--m);font-size:12px}.pill{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;white-space:nowrap}.ok{background:#d1fae5;color:#065f46}.warn{background:#fef3c7;color:#92400e}.bad{background:#fee2e2;color:#991b1b}
+.x{background:none;color:var(--m);padding:0 4px}#status{font-size:13px;color:var(--m)}
+.tabs{display:flex;gap:6px;margin-bottom:10px}.tabs button{flex:1}
+</style></head><body>
+<header><h1>💸 Money Backers</h1><p>We’ve got your money’s back. Catch return deadlines, forgotten subscriptions & price drops.</p></header>
+<main>
+<div class="card hero"><div class="sub">Potential money to recover</div><div class="big" id="total">$0.00</div>
+<div class="stats"><div><b id="sRet">$0</b>Returnable now</div><div><b id="sSub">$0</b>Subs / yr</div><div><b id="sCnt">0</b>Receipts</div></div></div>
+<div class="card"><h2>Add a receipt</h2>
+<textarea id="txt" placeholder="Paste receipt or order-confirmation email text…"></textarea>
+<div class="row"><button id="parseBtn">Analyze text</button>
+<label class="btn ghost">📎 Upload image/PDF<input type="file" id="file" accept="image/*,application/pdf" hidden></label>
+<button class="ghost" id="demo">Load demo receipts</button><button class="ghost" id="clear" style="color:#991b1b">🗑 Delete all my data</button></div>
+<div id="status"></div><div class="sub" style="margin-top:6px">Your receipts are stored only in this browser. “Delete all my data” erases them from this device.</div></div>
+<div class="card"><h2>⏰ Return windows</h2><div id="returns"></div></div>
+<div class="card"><h2>🔁 Recurring subscriptions</h2><div id="subs"></div></div>
+<div class="card"><h2>📉 Price drop watch <span class="pill warn">Coming soon</span></h2><div class="sub" style="margin-bottom:6px">Automatic price-drop checks are coming soon. Items still inside their return window are listed below; no savings are counted until a real drop is found.</div><div id="watch"></div></div>
+</main>
+<footer style="text-align:center;color:#64748b;font-size:14px;padding:24px 0 32px">© 2026 Money Backers · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/">Home</a></footer>
+<script src="parser.js"></script><script src="app.js"></script></body></html>
